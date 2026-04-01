@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harry Smalley — Developer & Tech Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #0F1117;
+  --surface:      #16181F;
+  --surface2:     #1C1F28;
+  --border:       rgba(255,255,255,0.07);
+  --border-hover: rgba(79,142,247,0.35);
+  --text:         #F0EEE9;
+  --muted:        #6B7280;
+  --muted2:       #9CA3AF;
+  --accent:       #4F8EF7;
+  --accent-dim:   rgba(79,142,247,0.10);
+  --accent-glow:  rgba(79,142,247,0.22);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 4rem;
+  background: rgba(15,17,23,0.82);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: var(--text); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1.15fr 0.85fr;
+  align-items: center; padding: 8rem 4rem 4rem; gap: 5rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(79,142,247,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(79,142,247,0.025) 1px, transparent 1px);
+  background-size: 64px 64px; pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; top: -25%; right: -10%;
+  width: 640px; height: 640px;
+  background: radial-gradient(circle, rgba(79,142,247,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.65rem;
+  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 2rem; font-weight: 500;
+}
+.eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--accent); display: inline-block; }
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3.2rem, 6vw, 5.6rem);
+  line-height: 1.0; letter-spacing: -0.02em;
+  margin-bottom: 1.75rem; font-weight: 400;
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+
+.hero-desc { font-size: 0.98rem; color: var(--muted2); max-width: 430px; margin-bottom: 2.75rem; line-height: 1.85; font-weight: 300; }
+
+.actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+.btn { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: 4px; text-decoration: none; display: inline-block; transition: all 0.22s; font-family: 'DM Sans', sans-serif; cursor: pointer; border: none; }
+.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 0 28px var(--accent-glow); }
+.btn-primary:hover { background: #6aa0f8; box-shadow: 0 0 36px var(--accent-glow); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--muted2); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--border-hover); color: var(--text); transform: translateY(-2px); }
+
+/* ── PHOTO ── */
+.hero-visual { position: relative; z-index: 2; display: flex; justify-content: center; }
+.photo-wrap { position: relative; width: 440px; height: 560px; }
+.photo-wrap::before { content: ''; position: absolute; top: -14px; left: -14px; width: 55px; height: 55px; border-top: 1px solid var(--accent); border-left: 1px solid var(--accent); opacity: 0.45; z-index: 3; }
+.photo-wrap::after { content: ''; position: absolute; bottom: -14px; right: -14px; width: 55px; height: 55px; border-bottom: 1px solid var(--accent); border-right: 1px solid var(--accent); opacity: 0.45; z-index: 3; }
+.photo-img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; border-radius: 4px; mix-blend-mode: luminosity; filter: contrast(1.06) brightness(0.93); }
+.photo-vignette { position: absolute; inset: 0; z-index: 2; border-radius: 4px; background: radial-gradient(ellipse at 50% 40%, transparent 30%, rgba(15,17,23,0.5) 75%, rgba(15,17,23,0.92) 100%), linear-gradient(to bottom, rgba(15,17,23,0.25) 0%, transparent 25%, transparent 65%, rgba(15,17,23,0.55) 100%); pointer-events: none; }
+.photo-placeholder { width: 100%; height: 100%; background: var(--surface); border-radius: 4px; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: var(--muted); border: 1px dashed var(--border); }
+.photo-placeholder span { font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.status-pill { position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); z-index: 4; background: var(--surface2); border: 1px solid rgba(79,142,247,0.3); color: var(--accent); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.45rem 1.4rem; border-radius: 40px; white-space: nowrap; font-weight: 500; box-shadow: 0 0 18px rgba(79,142,247,0.14); }
+
+/* ── METRICS ── */
+.metrics { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: grid; grid-template-columns: repeat(4,1fr); }
+.metric { padding: 2rem; text-align: center; border-right: 1px solid var(--border); transition: background 0.2s; }
+.metric:last-child { border-right: none; }
+.metric:hover { background: var(--surface2); }
+.metric-val { font-family: 'DM Serif Display', serif; font-size: 2.1rem; font-weight: 400; color: var(--text); display: block; letter-spacing: -0.02em; margin-bottom: 0.3rem; }
+.metric-val span { color: var(--accent); }
+.metric-lbl { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+/* ── SECTIONS ── */
+.section { padding: 7rem 4rem; }
+
+.sec-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.85rem; font-weight: 500; }
+.sec-eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--accent); display: inline-block; }
+
+h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 3.2vw, 2.7rem); letter-spacing: -0.02em; line-height: 1.1; font-weight: 400; margin-bottom: 3rem; }
+
+/* ── ABOUT ── */
+#about { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
+.about-body p { font-size: 0.96rem; color: var(--muted2); line-height: 1.9; margin-bottom: 1.1rem; }
+.about-body p strong { color: var(--text); font-weight: 500; }
+.info-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid var(--border); gap: 2rem; }
+.info-row:first-of-type { border-top: 1px solid var(--border); }
+.info-key { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; min-width: 105px; padding-top: 0.1rem; }
+.info-val { font-size: 0.88rem; color: var(--text); text-align: right; line-height: 1.55; }
+.grade-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: flex-end; }
+.pill { font-size: 0.68rem; padding: 0.2rem 0.55rem; border-radius: 3px; background: var(--surface2); color: var(--muted2); border: 1px solid var(--border); }
+.pill.hi { background: var(--accent-dim); color: var(--accent); border-color: rgba(79,142,247,0.2); }
+
+/* ── ACHIEVEMENTS ── */
+#achievements { background: var(--surface); }
+
+.ach-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+
+.ach-card {
+  background: var(--surface); padding: 2.25rem;
+  position: relative; transition: background 0.25s; overflow: hidden;
+  cursor: pointer;
+}
+.ach-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+.ach-card:hover { background: var(--surface2); }
+.ach-card:hover::after { transform: scaleX(1); }
+
+.ach-icon { font-size: 1.4rem; margin-bottom: 1rem; display: block; }
+.ach-title { font-family: 'DM Serif Display', serif; font-size: 1.05rem; line-height: 1.25; margin-bottom: 0.6rem; font-weight: 400; }
+.ach-body { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+.ach-meta { display: inline-block; margin-top: 1.2rem; font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+
+.ach-link-hint {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  margin-top: 0.75rem; margin-left: 0.75rem;
+  font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); opacity: 0;
+  transition: opacity 0.2s;
+}
+.ach-card:hover .ach-link-hint { opacity: 1; }
+.ach-link-hint::before { content: '↗'; color: var(--accent); }
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(10,11,15,0.88);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  max-width: 820px; width: 100%;
+  max-height: 90vh; overflow-y: auto; overflow-x: hidden;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+  position: relative;
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+
+.modal-close {
+  position: absolute; top: 1.25rem; right: 1.25rem;
+  width: 32px; height: 32px;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 50%; color: var(--muted); font-size: 1rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; z-index: 10;
+}
+.modal-close:hover { color: var(--text); border-color: var(--border-hover); }
+
+.modal-header { padding: 2.5rem 2.5rem 1.5rem; border-bottom: 1px solid var(--border); }
+.modal-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.modal-title { font-family: 'DM Serif Display', serif; font-size: 1.7rem; font-weight: 400; line-height: 1.2; margin-bottom: 0.5rem; }
+.modal-subtitle { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+
+.modal-body { padding: 2rem 2.5rem 2.5rem; }
+.modal-body p { font-size: 0.93rem; color: var(--muted2); line-height: 1.85; margin-bottom: 1rem; }
+.modal-body p strong { color: var(--text); font-weight: 500; }
+
+/* ── PHOTO SECTION IN MODAL ── */
+.modal-photo {
+  width: 100%; border-radius: 6px; overflow: hidden;
+  margin: 1.5rem 0; position: relative;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+}
+.modal-photo img {
+  width: 100%; display: block;
+  border-radius: 6px;
+}
+.modal-photo-placeholder {
+  width: 100%; height: 220px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0.5rem; color: var(--muted);
+}
+.modal-photo-placeholder span { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.modal-photo-caption {
+  font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em;
+  text-align: center; margin-top: 0.5rem; font-style: italic;
+}
+
+/* ── SLIDE CAROUSEL ── */
+.carousel-wrap { margin: 2rem 0; }
+.carousel-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.carousel-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+
+
+/* ── CAROUSEL — clean single-slide viewer with side peeks ── */
+.carousel { position: relative; }
+
+/* Carousel outer wrapper — must not overflow */
+.carousel-window {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Sliding strip — width is set by JS per slide */
+.carousel-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Every slide — proper 16:9 PowerPoint ratio, full window width */
+.slide-item {
+  flex: 0 0 100%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  transition: opacity 0.35s, border-color 0.35s, box-shadow 0.35s;
+  opacity: 0.5;
+  filter: brightness(0.7);
+}
+
+.slide-item.pos-center {
+  opacity: 1;
+  filter: none;
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+}
+
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #fff;
+}
+
+.slide-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0.5rem; color: var(--muted);
+}
+.slide-placeholder .slide-num { font-family: 'DM Serif Display', serif; font-size: 2rem; opacity: 0.2; }
+.slide-placeholder .slide-hint { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.carousel-controls {
+  display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.carousel-btn {
+  width: 40px; height: 40px;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 50%; color: var(--muted2);
+  font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.carousel-btn:hover { border-color: var(--border-hover); color: var(--accent); background: var(--accent-dim); }
+
+.carousel-dots { display: flex; gap: 0.5rem; }
+.carousel-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--surface2); border: 1px solid var(--border);
+  cursor: pointer; transition: all 0.2s;
+}
+.carousel-dot.active { background: var(--accent); border-color: var(--accent); width: 18px; border-radius: 3px; }
+
+.modal-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  color: var(--accent); font-size: 0.82rem; text-decoration: none;
+  border: 1px solid rgba(79,142,247,0.25); padding: 0.6rem 1.2rem;
+  border-radius: 4px; margin-top: 1rem;
+  transition: all 0.2s;
+}
+.modal-link:hover { background: var(--accent-dim); border-color: var(--border-hover); }
+
+/* ── PROJECTS ── */
+#projects { background: var(--bg); }
+.proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.proj-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 2.5rem; transition: border-color 0.25s, transform 0.22s, box-shadow 0.25s; position: relative; overflow: hidden; }
+.proj-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--accent-dim), transparent 55%); opacity: 0; transition: opacity 0.3s; }
+.proj-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+.proj-card:hover::before { opacity: 1; }
+.proj-num { font-family: 'DM Serif Display', serif; font-size: 4rem; font-weight: 400; color: rgba(79,142,247,0.06); position: absolute; top: 1.5rem; right: 1.75rem; line-height: 1; pointer-events: none; }
+.proj-title { font-family: 'DM Serif Display', serif; font-size: 1.2rem; font-weight: 400; margin-bottom: 0.65rem; line-height: 1.2; position: relative; }
+.proj-body { font-size: 0.84rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.5rem; position: relative; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; position: relative; }
+.chip { font-size: 0.67rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.22rem 0.6rem; border-radius: 3px; background: var(--surface2); color: var(--muted2); border: 1px solid var(--border); }
+.proj-footer { margin-top: 2rem; }
+
+/* ── SKILLS ── */
+#skills { background: var(--surface); }
+.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3.5rem; }
+.skill-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.4rem; font-weight: 500; display: flex; align-items: center; gap: 0.6rem; }
+.skill-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.skill-item { display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; color: var(--muted2); transition: color 0.2s, padding-left 0.2s; cursor: default; }
+.skill-item:hover { color: var(--text); padding-left: 0.35rem; }
+.dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: 0.35; flex-shrink: 0; transition: opacity 0.2s; }
+.skill-item:hover .dot { opacity: 1; }
+
+/* ── CONTACT ── */
+#contact { background: var(--bg); text-align: center; }
+.contact-inner { max-width: 500px; margin: 0 auto; }
+.contact-inner p { font-size: 0.96rem; color: var(--muted2); line-height: 1.85; margin-bottom: 2.75rem; }
+.contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.contact-link { display: flex; align-items: center; gap: 0.5rem; color: var(--muted2); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.08em; font-weight: 400; border: 1px solid var(--border); padding: 0.8rem 1.6rem; border-radius: 4px; transition: all 0.2s; }
+.contact-link:hover { border-color: var(--border-hover); color: var(--accent); background: var(--accent-dim); }
+
+/* ── FOOTER ── */
+footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.04em; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.eyebrow     { animation: fadeUp 0.5s 0.00s ease both; }
+.hero h1     { animation: fadeUp 0.6s 0.10s ease both; }
+.hero-desc   { animation: fadeUp 0.6s 0.20s ease both; }
+.actions     { animation: fadeUp 0.6s 0.30s ease both; }
+.hero-visual { animation: fadeUp 0.7s 0.15s ease both; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  nav { padding: 1.1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 6.5rem 1.5rem 3rem; gap: 3rem; }
+  .hero-visual { order: -1; }
+  .photo-wrap { width: 260px; height: 335px; }
+  .metrics { grid-template-columns: repeat(2,1fr); }
+  .section { padding: 4rem 1.5rem; }
+  #about { grid-template-columns: 1fr; gap: 3rem; }
+  .ach-grid { grid-template-columns: 1fr; }
+  .proj-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  .slide-item.pos-left, .slide-item.pos-right { opacity: 0.3; transform: translateX(0) scale(0.75); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Harry <span>Smalley</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Year 12 · Preston · North West England</div>
+    <h1>Developer.<br>Competitor.<br><em>Builder.</em></h1>
+    <p class="hero-desc">
+      16-year-old software student targeting a tech degree apprenticeship.
+      Building real projects, competing nationally, and connecting with industry — right now.
+    </p>
+    <div class="actions">
+      <a href="#achievements" class="btn btn-primary">View Achievements</a>
+      <a href="https://www.linkedin.com/in/harry-smalley-156219341/" target="_blank" class="btn btn-ghost">LinkedIn →</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="photo-wrap">
+      <img class="photo-img" src="headshot.jpg" alt="Harry Smalley"
+        onerror="this.style.display='none'; document.querySelector('.photo-placeholder').style.display='flex';">
+      <div class="photo-vignette"></div>
+      <div class="photo-placeholder">
+        <span style="font-size:2rem;opacity:0.2">👤</span>
+        <span>Add headshot.jpg</span>
+      </div>
+      <div class="status-pill">Open to Opportunities</div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div class="metrics">
+  <div class="metric"><span class="metric-val">A*<span>A*</span>A*</span><span class="metric-lbl">Predicted Grades</span></div>
+  <div class="metric"><span class="metric-val">4</span><span class="metric-lbl">A-Level Subjects</span></div>
+  <div class="metric"><span class="metric-val">5<span>+</span></span><span class="metric-lbl">Competitions</span></div>
+  <div class="metric"><span class="metric-val">16</span><span class="metric-lbl">Years Old</span></div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-body">
+    <div class="sec-eyebrow">About Me</div>
+    <h2>Building towards<br>something real.</h2>
+    <p>I'm a Year 12 student at <strong>LUSoM Sixth Form</strong> in Lancaster, studying Maths, Further Maths, Computing and Business at A-level — targeting <strong>A*A*A*</strong>.</p>
+    <p>In March 2026, I led the data and ML solution slides in a consulting-style proposal presented to <strong>9 professionals at Lloyds Banking Group and TCS</strong>, receiving strong praise from every judge. I've competed in national data and maths competitions and presented at university level aged 16.</p>
+    <p>My goal is a <strong>tech or software degree apprenticeship</strong> in the North West. Long term, I want to build a company in AI or cybersecurity by my early twenties. Everything I'm doing now is building towards that.</p>
+  </div>
+  <div class="about-aside">
+    <div class="sec-eyebrow">Details</div>
+    <h2>The facts.</h2>
+    <div class="info-row"><span class="info-key">A-Levels</span><span class="info-val">Maths · Further Maths<br>Computing (OCR MEI) · Business</span></div>
+    <div class="info-row"><span class="info-key">Target</span><span class="info-val">A*A*A*</span></div>
+    <div class="info-row">
+      <span class="info-key">GCSEs</span>
+      <div class="grade-pills">
+        <span class="pill hi">Maths 9</span>
+        <span class="pill hi">Sci 9·9</span>
+        <span class="pill hi">Comp Sci L2D*</span>
+        <span class="pill">English 6</span>
+        <span class="pill">PE 8</span>
+        <span class="pill">RE 6</span>
+        <span class="pill">Geography 6</span>
+      </div>
+    </div>
+    <div class="info-row"><span class="info-key">Location</span><span class="info-val">Preston, Lancashire</span></div>
+    <div class="info-row"><span class="info-key">Goal</span><span class="info-val">Tech Degree Apprenticeship<br>Manchester / North West</span></div>
+    <div class="info-row"><span class="info-key">GitHub</span><span class="info-val"><a href="https://github.com/pne35/Projects" target="_blank" style="color:var(--accent);text-decoration:none;">github.com/pne35</a></span></div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="section" id="achievements">
+  <div class="sec-eyebrow">Track Record</div>
+  <h2>Achievements &amp; Competitions <span style="font-size:0.8rem;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:300;letter-spacing:0.05em;">— click any card to explore</span></h2>
+
+  <div class="ach-grid">
+
+    <div class="ach-card" onclick="openModal('lloyds')">
+      <span class="ach-icon">🏦</span>
+      <div class="ach-title">Lloyds Banking Group × TCS Challenge</div>
+      <p class="ach-body">Led the data and ML solution slides in a consulting-style proposal on predicting customer financial difficulty. Received strong praise from all 9 industry judges.</p>
+      <div style="display:flex;align-items:center;gap:0">
+        <span class="ach-meta">March 2026 · Industry Competition</span>
+        <span class="ach-link-hint">View details</span>
+      </div>
+    </div>
+
+    <div class="ach-card" onclick="openModal('uksdc')">
+      <span class="ach-icon">📊</span>
+      <div class="ach-title">UKSDC — UK Schools Data Challenge</div>
+      <p class="ach-body">Competed at regional level in one of the UK's leading student data competitions. Targeting a leadership role and further rounds in the next cycle.</p>
+      <div style="display:flex;align-items:center;gap:0">
+        <span class="ach-meta">Regional · Data Competition</span>
+        <span class="ach-link-hint">View details</span>
+      </div>
+    </div>
+
+    <div class="ach-card" onclick="openModal('lancaster')">
+      <span class="ach-icon">🎓</span>
+      <div class="ach-title">Lancaster University Presentation</div>
+      <p class="ach-body">Delivered a maths and statistics group project on Poisson Processes at university level, aged 16 — demonstrating academic ability beyond A-level standard.</p>
+      <div style="display:flex;align-items:center;gap:0">
+        <span class="ach-meta">University Level · Age 16</span>
+        <span class="ach-link-hint">View details</span>
+      </div>
+    </div>
+
+    <div class="ach-card" onclick="openModal('smt')">
+      <span class="ach-icon">📐</span>
+      <div class="ach-title">UK Senior Mathematical Trust — Silver</div>
+      <p class="ach-body">Achieved Silver in the SMT, one of the UK's most prestigious sixth form maths competitions. Targeting Gold in the next cycle.</p>
+      <div style="display:flex;align-items:center;gap:0">
+        <span class="ach-meta">SMT · Silver Award</span>
+        <span class="ach-link-hint">View details</span>
+      </div>
+    </div>
+
+    <div class="ach-card" onclick="openModal('iea')">
+      <span class="ach-icon">💷</span>
+      <div class="ach-title">IEA UK Budget Challenge</div>
+      <p class="ach-body">Submitted a full UK budget proposal demonstrating analytical thinking, research, and written communication across economics and policy.</p>
+      <div style="display:flex;align-items:center;gap:0">
+        <span class="ach-meta">Economics · Policy</span>
+        <span class="ach-link-hint">View details</span>
+      </div>
+    </div>
+
+    <div class="ach-card" onclick="openModal('dofe')">
+      <span class="ach-icon">🏅</span>
+      <div class="ach-title">Duke of Edinburgh Award</div>
+      <p class="ach-body">Completed the DofE award across physical, skill, volunteering and expedition sections — demonstrating sustained commitment, teamwork, and resilience.</p>
+      <div style="display:flex;align-items:center;gap:0">
+        <span class="ach-meta">DofE · Completed</span>
+        <span class="ach-link-hint">View details</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="sec-eyebrow">What I've Built</div>
+  <h2>Projects</h2>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <span class="proj-num">01</span>
+      <div class="proj-title">Eldoria: Dungeon Survivor</div>
+      <p class="proj-body">A C# console roguelike built in ~3 days as a school OOP project. 18 files, 3 inheritance hierarchies, turn-based combat, infinite wave scaling, a shop system, prestige meta-progression, boss fights, and ASCII art. Independently devised an abstract SaveData class pattern beyond anything taught in class.</p>
+      <div class="chips"><span class="chip">C#</span><span class="chip">OOP</span><span class="chip">Game Design</span><span class="chip">Architecture</span></div>
+    </div>
+    <div class="proj-card">
+      <span class="proj-num">02</span>
+      <div class="proj-title">Lloyds ML Consulting Proposal</div>
+      <p class="proj-body">Designed and presented the data architecture and ML approach for a consulting proposal to Lloyds Banking Group and TCS. Covered predictive modelling for identifying customers at financial risk, judged by 9 industry professionals.</p>
+      <div class="chips"><span class="chip">Machine Learning</span><span class="chip">Data Design</span><span class="chip">Consulting</span><span class="chip">Python</span></div>
+    </div>
+  </div>
+  <div class="proj-footer"><a href="https://github.com/pne35/Projects" target="_blank" class="btn btn-ghost">View GitHub →</a></div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="sec-eyebrow">Capabilities</div>
+  <h2>Skills &amp; Tools</h2>
+  <div class="skills-grid">
+    <div>
+      <div class="skill-label">Languages</div>
+      <div class="skill-item">Python <span class="dot"></span></div>
+      <div class="skill-item">C# <span class="dot"></span></div>
+      <div class="skill-item">HTML &amp; CSS <span class="dot"></span></div>
+      <div class="skill-item">Lua <span class="dot"></span></div>
+    </div>
+    <div>
+      <div class="skill-label">Areas</div>
+      <div class="skill-item">Object-Oriented Programming <span class="dot"></span></div>
+      <div class="skill-item">Web Scraping &amp; Automation <span class="dot"></span></div>
+      <div class="skill-item">AI / ML Awareness <span class="dot"></span></div>
+      <div class="skill-item">Data Analysis <span class="dot"></span></div>
+      <div class="skill-item">Consulting Presentations <span class="dot"></span></div>
+    </div>
+    <div>
+      <div class="skill-label">Tools &amp; Interests</div>
+      <div class="skill-item">GitHub <span class="dot"></span></div>
+      <div class="skill-item">Excel <span class="dot"></span></div>
+      <div class="skill-item">Cybersecurity <span class="dot"></span></div>
+      <div class="skill-item">Entrepreneurship <span class="dot"></span></div>
+      <div class="skill-item">Quantum Computing <span class="dot"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="contact-inner">
+    <div class="sec-eyebrow" style="justify-content:center">Get In Touch</div>
+    <h2 style="margin-bottom:1.25rem">Let's connect.</h2>
+    <p>Open to work experience, competitions, and conversations with people in tech and software. Feel free to reach out.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/harry-smalley-156219341/" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="https://github.com/pne35/Projects" target="_blank" class="contact-link">GitHub</a>
+      <a href="/cdn-cgi/l/email-protection#412920333338322c202d2d2438767501262c20282d6f222e2c" class="contact-link">Email</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Harry Smalley · Preston, Lancashire · 2026</span>
+  <span>Open to tech apprenticeships in the North West</span>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     MODALS
+═══════════════════════════════════════════════ -->
+
+<!-- LLOYDS MODAL -->
+<div class="modal-overlay" id="modal-lloyds" onclick="closeModalOnBg(event, 'lloyds')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('lloyds')">✕</button>
+    <div class="modal-header">
+      <span class="modal-icon">🏦</span>
+      <div class="modal-title">Lloyds Banking Group × TCS Challenge</div>
+      <div class="modal-subtitle">March 2026 · Consulting Competition · Industry Judged</div>
+    </div>
+    <div class="modal-body">
+      <p>A consulting-style competition run in partnership between <strong>Lloyds Banking Group</strong> and <strong>Tata Consultancy Services (TCS)</strong>. Teams were tasked with producing a data-driven proposal on how to predict and prevent customer financial difficulty using machine learning.</p>
+      <p>I led the <strong>data architecture and ML solution slides</strong> (slides 9–16), covering the modelling approach, feature selection, and deployment considerations. The presentation was judged by 9 Lloyds and TCS professionals and received strong praise across the board.</p>
+      <p>Following the competition I connected with <strong>7 industry professionals</strong> on LinkedIn, all of whom accepted — building a genuine network for future work experience and career opportunities.</p>
+
+      <!-- PHOTO -->
+      <div class="modal-photo">
+        <img src="lloyds.jpg" alt="Harry at Lloyds Banking Group competition"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      </div>
+      <p class="modal-photo-caption">Lloyds Banking Group × TCS Competition, March 2026</p>
+
+      <!-- SLIDE CAROUSEL -->
+      <div class="carousel-wrap">
+        <div class="carousel-label">Presentation Slides</div>
+        <div class="carousel" id="carousel-lloyds">
+          <div class="carousel-window">
+            <div class="carousel-track" id="track-lloyds">
+              <div class="slide-item" data-index="0">
+                <img class="slide-img" src="slide1.jpg" alt="Slide 1"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">1</span><span class="slide-hint">Add slide1.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="1">
+                <img class="slide-img" src="slide2.jpg" alt="Slide 2"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">2</span><span class="slide-hint">Add slide2.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="2">
+                <img class="slide-img" src="slide3.jpg" alt="Slide 3"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">3</span><span class="slide-hint">Add slide3.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="3">
+                <img class="slide-img" src="slide4.jpg" alt="Slide 4"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">4</span><span class="slide-hint">Add slide4.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="4">
+                <img class="slide-img" src="slide5.jpg" alt="Slide 5"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">5</span><span class="slide-hint">Add slide5.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="5">
+                <img class="slide-img" src="slide6.jpg" alt="Slide 6"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">6</span><span class="slide-hint">Add slide6.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="6">
+                <img class="slide-img" src="slide7.jpg" alt="Slide 7"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">7</span><span class="slide-hint">Add slide7.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="7">
+                <img class="slide-img" src="slide8.jpg" alt="Slide 8"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">8</span><span class="slide-hint">Add slide8.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="8">
+                <img class="slide-img" src="slide9.jpg" alt="Slide 9"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">9</span><span class="slide-hint">Add slide9.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="9">
+                <img class="slide-img" src="slide10.jpg" alt="Slide 10"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">10</span><span class="slide-hint">Add slide10.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="10">
+                <img class="slide-img" src="slide11.jpg" alt="Slide 11"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">11</span><span class="slide-hint">Add slide11.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="11">
+                <img class="slide-img" src="slide12.jpg" alt="Slide 12"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">12</span><span class="slide-hint">Add slide12.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="12">
+                <img class="slide-img" src="slide13.jpg" alt="Slide 13"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">13</span><span class="slide-hint">Add slide13.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="13">
+                <img class="slide-img" src="slide14.jpg" alt="Slide 14"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">14</span><span class="slide-hint">Add slide14.jpg</span></div>
+              </div>
+
+              <div class="slide-item" data-index="14">
+                <img class="slide-img" src="slide15.jpg" alt="Slide 15"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="slide-placeholder"><span class="slide-num">15</span><span class="slide-hint">Add slide15.jpg</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-controls">
+            <button class="carousel-btn" onclick="prevSlide('lloyds')">←</button>
+            <div class="carousel-dots" id="dots-lloyds">
+              <div class="carousel-dot active" onclick="goToSlide('lloyds',0)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',1)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',2)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',3)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',4)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',5)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',6)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',7)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',8)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',9)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',10)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',11)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',12)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',13)"></div>
+              <div class="carousel-dot" onclick="goToSlide('lloyds',14)"></div>
+            </div>
+            <button class="carousel-btn" onclick="nextSlide('lloyds')">→</button>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://www.lloydsbanking.com/" target="_blank" class="modal-link">↗ Lloyds Banking Group website</a>
+    </div>
+  </div>
+</div>
+
+<!-- UKSDC MODAL -->
+<div class="modal-overlay" id="modal-uksdc" onclick="closeModalOnBg(event, 'uksdc')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('uksdc')">✕</button>
+    <div class="modal-header">
+      <span class="modal-icon">📊</span>
+      <div class="modal-title">UK Schools Data Challenge</div>
+      <div class="modal-subtitle">Regional Level · National Data Competition</div>
+    </div>
+    <div class="modal-body">
+      <p>The <strong>UK Schools Data Challenge (UKSDC)</strong> is one of the UK's leading student data science competitions, challenging sixth form teams to analyse real-world datasets and present data-driven insights.</p>
+      <p>I competed at <strong>regional level</strong>, gaining experience in data analysis, presentation, and working under competition conditions. I'm re-entering next year targeting a stronger result and potentially a leadership role.</p>
+      <a href="https://www.uksdc.co.uk/" target="_blank" class="modal-link">↗ UKSDC website</a>
+    </div>
+  </div>
+</div>
+
+<!-- LANCASTER MODAL -->
+<div class="modal-overlay" id="modal-lancaster" onclick="closeModalOnBg(event, 'lancaster')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('lancaster')">✕</button>
+    <div class="modal-header">
+      <span class="modal-icon">🎓</span>
+      <div class="modal-title">Lancaster University Presentation</div>
+      <div class="modal-subtitle">Poisson Process · University Level · Age 16</div>
+    </div>
+    <div class="modal-body">
+      <p>As part of a maths enrichment programme, I delivered a group presentation on <strong>Poisson Processes</strong> at Lancaster University — a university-level statistics topic well beyond A-level content.</p>
+      <p>Presenting to a university audience at 16 demonstrated both <strong>academic ability above A-level</strong> and the confidence to communicate complex mathematical ideas clearly.</p>
+      <a href="https://www.lancaster.ac.uk/" target="_blank" class="modal-link">↗ Lancaster University website</a>
+    </div>
+  </div>
+</div>
+
+<!-- SMT MODAL -->
+<div class="modal-overlay" id="modal-smt" onclick="closeModalOnBg(event, 'smt')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('smt')">✕</button>
+    <div class="modal-header">
+      <span class="modal-icon">📐</span>
+      <div class="modal-title">UK Senior Mathematical Trust</div>
+      <div class="modal-subtitle">Silver Award · Targeting Gold</div>
+    </div>
+    <div class="modal-body">
+      <p>The <strong>Senior Mathematical Trust (SMT)</strong>, run by the UK Mathematics Trust, is one of the most prestigious maths competitions for sixth form students in the UK. It tests problem-solving ability and mathematical reasoning beyond the standard curriculum.</p>
+      <p>I achieved a <strong>Silver certificate</strong> and I'm targeting Gold in the next cycle as part of my ongoing push to reach the highest level in maths competitions.</p>
+      <a href="https://www.ukmt.org.uk/" target="_blank" class="modal-link">↗ UKMT website</a>
+    </div>
+  </div>
+</div>
+
+<!-- IEA MODAL -->
+<div class="modal-overlay" id="modal-iea" onclick="closeModalOnBg(event, 'iea')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('iea')">✕</button>
+    <div class="modal-header">
+      <span class="modal-icon">💷</span>
+      <div class="modal-title">IEA UK Budget Challenge</div>
+      <div class="modal-subtitle">Economics · Policy · Written Proposal</div>
+    </div>
+    <div class="modal-body">
+      <p>The <strong>IEA Budget Challenge</strong>, run by the Institute of Economic Affairs, invites students to design a credible UK budget proposal covering taxation, public spending, and economic policy.</p>
+      <p>My submission demonstrated analytical thinking, economic awareness, and the ability to construct and communicate a structured policy argument — skills directly relevant to consulting and business roles.</p>
+      <a href="https://iea.org.uk/" target="_blank" class="modal-link">↗ IEA website</a>
+    </div>
+  </div>
+</div>
+
+<!-- DOFE MODAL -->
+<div class="modal-overlay" id="modal-dofe" onclick="closeModalOnBg(event, 'dofe')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('dofe')">✕</button>
+    <div class="modal-header">
+      <span class="modal-icon">🏅</span>
+      <div class="modal-title">Duke of Edinburgh Award</div>
+      <div class="modal-subtitle">Completed · Teamwork · Resilience</div>
+    </div>
+    <div class="modal-body">
+      <p>The <strong>Duke of Edinburgh Award</strong> requires sustained commitment across four sections: physical, skill, volunteering, and an expedition. Completing it demonstrates personal organisation, resilience, and the ability to follow through on long-term commitments.</p>
+      <p>It's recognised by employers and universities as evidence of character and drive beyond academic achievement.</p>
+      <a href="https://www.dofe.org/" target="_blank" class="modal-link">↗ DofE website</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── MODAL ──
+function openModal(id) {
+  document.getElementById('modal-' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById('modal-' + id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOnBg(e, id) {
+  if (e.target === document.getElementById('modal-' + id)) closeModal(id);
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+
+// ── CAROUSEL ──
+const carousels = {};
+
+function initCarousel(id, total) {
+  carousels[id] = { current: 0, total };
+  renderCarousel(id);
+}
+
+function renderCarousel(id) {
+  const c = carousels[id];
+  const track = document.getElementById('track-' + id);
+  if (!track) return;
+  const win = track.parentElement; // .carousel-window
+  const slides = track.querySelectorAll('.slide-item');
+  const dots   = document.querySelectorAll('#dots-' + id + ' .carousel-dot');
+
+  const slideW = win.clientWidth; // each slide = full window width
+  const gap = 12;
+
+  // Set each slide to exact pixel width so there's no rounding drift
+  slides.forEach((slide, i) => {
+    slide.style.flex = '0 0 ' + slideW + 'px';
+    slide.style.width = slideW + 'px';
+    slide.classList.toggle('pos-center', i === c.current);
+  });
+
+  // Translate track so current slide is flush left (window clips the rest)
+  const offset = -(c.current * (slideW + gap));
+  track.style.transform = 'translateX(' + offset + 'px)';
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === c.current);
+  });
+}
+
+function nextSlide(id) {
+  const c = carousels[id];
+  c.current = Math.min(c.current + 1, c.total - 1);
+  renderCarousel(id);
+}
+function prevSlide(id) {
+  const c = carousels[id];
+  c.current = Math.max(c.current - 1, 0);
+  renderCarousel(id);
+}
+function goToSlide(id, index) {
+  carousels[id].current = index;
+  renderCarousel(id);
+}
+
+window.addEventListener('resize', () => {
+  Object.keys(carousels).forEach(id => renderCarousel(id));
+});
+
+// Re-render when modal opens so width is correct
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  const observer = new MutationObserver(() => {
+    if (m.classList.contains('open')) {
+      setTimeout(() => Object.keys(carousels).forEach(id => renderCarousel(id)), 50);
+    }
+  });
+  observer.observe(m, { attributes: true, attributeFilter: ['class'] });
+});
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  const open = document.querySelector('.modal-overlay.open');
+  if (!open) return;
+  const id = open.id.replace('modal-', '');
+  if (carousels[id]) {
+    if (e.key === 'ArrowRight') nextSlide(id);
+    if (e.key === 'ArrowLeft')  prevSlide(id);
+  }
+});
+
+// Init carousels — add one line per competition that has slides
+initCarousel('lloyds', 15);
+</script>
+
+</body>
+</html>
