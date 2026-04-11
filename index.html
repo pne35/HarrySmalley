@@ -367,7 +367,7 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
 .hero-visual { animation: fadeUp 0.7s 0.15s ease both; }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
   nav { padding: 1.1rem 1.5rem; }
   .nav-links { display: none; }
   .hero { grid-template-columns: 1fr; padding: 6.5rem 1.5rem 3rem; gap: 3rem; }
@@ -428,7 +428,7 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
 
 <!-- METRICS -->
 <div class="metrics">
-  <div class="metric"><span class="metric-val">A*<span>A*</span>A*</span><span class="metric-lbl">Predicted Grades</span></div>
+  <div class="metric"><span class="metric-val"><span>A*</span>A*<span>A*</span></span><span class="metric-lbl">Predicted Grades</span></div>
   <div class="metric"><span class="metric-val">3</span><span class="metric-lbl">A-Level Subjects</span></div>
   <div class="metric"><span class="metric-val">5<span>+</span></span><span class="metric-lbl">Competitions</span></div>
   <div class="metric"><span class="metric-val">16</span><span class="metric-lbl">Years Old</span></div>
@@ -453,9 +453,9 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
       <div class="grade-pills">
         <span class="pill hi">Maths 9</span>
         <span class="pill hi">Sci 9·9</span>
-        <span class="pill hi">Comp Sci L2D*</span>
+        <span class="pill hi">Comp Sci 8</span>
         <span class="pill">English 6</span>
-        <span class="pill">PE 8</span>
+        <span class="pill">PE L2D*</span>
         <span class="pill">RE 6</span>
         <span class="pill">Geography 6</span>
       </div>
@@ -556,8 +556,14 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
     <div class="proj-card">
       <span class="proj-num">03</span>
       <div class="proj-title">PC Builds &amp; Sales</div>
-      <p class="proj-body">Built 4 custom PCs from scratch — researching components, managing budgets, and assembling hardware end-to-end. Sold 2 of them, turning a technical hobby into a small side hustle. Developed practical skills in hardware architecture, troubleshooting, and client-facing communication.</p>
+      <p class="proj-body">Built and sold custom PCs — researching components, managing budgets, and assembling hardware end-to-end. Sourced undervalued parts, built working systems, and sold at a margin. Developed practical skills in hardware architecture, troubleshooting, and client-facing communication.</p>
       <div class="chips"><span class="chip">Hardware</span><span class="chip">Component Research</span><span class="chip">Troubleshooting</span><span class="chip">Entrepreneurship</span></div>
+    </div>
+    <div class="proj-card">
+      <span class="proj-num">04</span>
+      <div class="proj-title">GCSE Maths Tutoring</div>
+      <p class="proj-body">Running a solo tutoring business offering 1-to-1 GCSE Maths sessions online via Zoom. Built a full client tracking system, session log, and topic progress tracker from scratch. Targeting Foundation and Higher tier students across Year 10 and 11.</p>
+      <div class="chips"><span class="chip">Teaching</span><span class="chip">Maths</span><span class="chip">Business</span><span class="chip">Entrepreneurship</span></div>
     </div>
   </div>
   <div class="proj-footer"><a href="https://github.com/pne35/Projects" target="_blank" class="btn btn-ghost">View GitHub →</a></div>
@@ -603,7 +609,7 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/harry-smalley-156219341/" target="_blank" class="contact-link">LinkedIn</a>
       <a href="https://github.com/pne35/Projects" target="_blank" class="contact-link">GitHub</a>
-      <a href="/cdn-cgi/l/email-protection#412920333338322c202d2d2438767501262c20282d6f222e2c" class="contact-link">Email</a>
+      <a href="mailto:harrysmalley09@hotmail.com" class="contact-link">Email</a>
     </div>
   </div>
 </section>
@@ -840,9 +846,7 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════════════ -->
+<script>
 // ── MODAL ──
 function openModal(id) {
   document.getElementById('modal-' + id).classList.add('open');
