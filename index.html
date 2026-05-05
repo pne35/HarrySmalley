@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harry Smalley — Developer & Tech Student</title>
+<title>Harry Smalley - Developer &amp; Tech Student</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&amp;family=DM+Serif+Display:ital@0;1&amp;display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -208,17 +206,13 @@ h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 3.2vw, 2.7
 .modal-body p { font-size: 0.93rem; color: var(--muted2); line-height: 1.85; margin-bottom: 1rem; }
 .modal-body p strong { color: var(--text); font-weight: 500; }
 
-/* ── PHOTO SECTION IN MODAL ── */
 .modal-photo {
   width: 100%; border-radius: 6px; overflow: hidden;
   margin: 1.5rem 0; position: relative;
   background: var(--surface2);
   border: 1px solid var(--border);
 }
-.modal-photo img {
-  width: 100%; display: block;
-  border-radius: 6px;
-}
+.modal-photo img { width: 100%; display: block; border-radius: 6px; }
 .modal-photo-placeholder {
   width: 100%; height: 220px;
   display: flex; flex-direction: column;
@@ -226,101 +220,29 @@ h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 3.2vw, 2.7
   gap: 0.5rem; color: var(--muted);
 }
 .modal-photo-placeholder span { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.modal-photo-caption { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; text-align: center; margin-top: 0.5rem; font-style: italic; }
 
-.modal-photo-caption {
-  font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em;
-  text-align: center; margin-top: 0.5rem; font-style: italic;
-}
-
-/* ── SLIDE CAROUSEL ── */
 .carousel-wrap { margin: 2rem 0; }
 .carousel-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
 .carousel-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-/* ── CAROUSEL ── */
 .carousel { position: relative; }
-
-.carousel-window {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-track {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
-
-.slide-item {
-  flex: 0 0 100%;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--surface2);
-  transition: opacity 0.35s, border-color 0.35s, box-shadow 0.35s;
-  opacity: 0.5;
-  filter: brightness(0.7);
-}
-
-.slide-item.pos-center {
-  opacity: 1;
-  filter: none;
-  border-color: var(--border-hover);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
-}
-
-.slide-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  background: #fff;
-}
-
-.slide-placeholder {
-  width: 100%; height: 100%;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 0.5rem; color: var(--muted);
-}
+.carousel-window { width: 100%; overflow: hidden; position: relative; }
+.carousel-track { display: flex; align-items: flex-start; gap: 12px; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; }
+.slide-item { flex: 0 0 100%; width: 100%; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); background: var(--surface2); transition: opacity 0.35s, border-color 0.35s, box-shadow 0.35s; opacity: 0.5; filter: brightness(0.7); }
+.slide-item.pos-center { opacity: 1; filter: none; border-color: var(--border-hover); box-shadow: 0 8px 32px rgba(0,0,0,0.45); }
+.slide-img { width: 100%; height: 100%; object-fit: contain; display: block; background: #fff; }
+.slide-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: var(--muted); }
 .slide-placeholder .slide-num { font-family: 'DM Serif Display', serif; font-size: 2rem; opacity: 0.2; }
 .slide-placeholder .slide-hint { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
-
-.carousel-controls {
-  display: flex; align-items: center; justify-content: center; gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.carousel-btn {
-  width: 40px; height: 40px;
-  background: var(--surface2); border: 1px solid var(--border);
-  border-radius: 50%; color: var(--muted2);
-  font-size: 1rem; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s;
-}
+.carousel-controls { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+.carousel-btn { width: 40px; height: 40px; background: var(--surface2); border: 1px solid var(--border); border-radius: 50%; color: var(--muted2); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
 .carousel-btn:hover { border-color: var(--border-hover); color: var(--accent); background: var(--accent-dim); }
-
 .carousel-dots { display: flex; gap: 0.5rem; }
-.carousel-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--surface2); border: 1px solid var(--border);
-  cursor: pointer; transition: all 0.2s;
-}
+.carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--surface2); border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; }
 .carousel-dot.active { background: var(--accent); border-color: var(--accent); width: 18px; border-radius: 3px; }
 
-.modal-link {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  color: var(--accent); font-size: 0.82rem; text-decoration: none;
-  border: 1px solid rgba(79,142,247,0.25); padding: 0.6rem 1.2rem;
-  border-radius: 4px; margin-top: 1rem;
-  transition: all 0.2s;
-}
+.modal-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-size: 0.82rem; text-decoration: none; border: 1px solid rgba(79,142,247,0.25); padding: 0.6rem 1.2rem; border-radius: 4px; margin-top: 1rem; transition: all 0.2s; }
 .modal-link:hover { background: var(--accent-dim); border-color: var(--border-hover); }
 
 /* ── PROJECTS ── */
@@ -337,8 +259,53 @@ h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 3.2vw, 2.7
 .chip { font-size: 0.67rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.22rem 0.6rem; border-radius: 3px; background: var(--surface2); color: var(--muted2); border: 1px solid var(--border); }
 .proj-footer { margin-top: 2rem; }
 
+/* ── TUTORING SECTION ── */
+#tutoring { background: var(--surface); }
+
+.tutoring-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+.tutoring-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 2rem; }
+.t-stat { background: var(--surface2); padding: 1.5rem; text-align: center; }
+.t-stat-val { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--text); display: block; letter-spacing: -0.02em; margin-bottom: 0.2rem; }
+.t-stat-val span { color: var(--accent); }
+.t-stat-lbl { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+.tutoring-desc p { font-size: 0.96rem; color: var(--muted2); line-height: 1.9; margin-bottom: 1.1rem; }
+.tutoring-desc p strong { color: var(--text); font-weight: 500; }
+
+.tool-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s;
+}
+.tool-card:hover { border-color: var(--border-hover); }
+.tool-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent 60%);
+}
+.tool-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+.tool-card-icon { font-size: 1.2rem; }
+.tool-card-title { font-family: 'DM Serif Display', serif; font-size: 1.05rem; font-weight: 400; }
+.tool-card-sub { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-top: 0.1rem; }
+
+.tool-features { list-style: none; margin-bottom: 1.5rem; }
+.tool-features li {
+  font-size: 0.82rem; color: var(--muted2); padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0.65rem;
+}
+.tool-features li:last-child { border-bottom: none; }
+.tool-features li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; opacity: 0.6; }
+
+.tool-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+
 /* ── SKILLS ── */
-#skills { background: var(--surface); }
+#skills { background: var(--bg); }
 .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3.5rem; }
 .skill-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.4rem; font-weight: 500; display: flex; align-items: center; gap: 0.6rem; }
 .skill-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
@@ -348,7 +315,7 @@ h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 3.2vw, 2.7
 .skill-item:hover .dot { opacity: 1; }
 
 /* ── CONTACT ── */
-#contact { background: var(--bg); text-align: center; }
+#contact { background: var(--surface); text-align: center; }
 .contact-inner { max-width: 500px; margin: 0 auto; }
 .contact-inner p { font-size: 0.96rem; color: var(--muted2); line-height: 1.85; margin-bottom: 2.75rem; }
 .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
@@ -378,9 +345,9 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
   #about { grid-template-columns: 1fr; gap: 3rem; }
   .ach-grid { grid-template-columns: 1fr; }
   .proj-grid { grid-template-columns: 1fr; }
+  .tutoring-layout { grid-template-columns: 1fr; gap: 3rem; }
   .skills-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
-  .slide-item.pos-left, .slide-item.pos-right { opacity: 0.3; transform: translateX(0) scale(0.75); }
 }
 </style>
 </head>
@@ -391,6 +358,7 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
   <a href="#" class="nav-logo">Harry <span>Smalley</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#tutoring">Tutoring</a></li>
     <li><a href="#achievements">Achievements</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -401,11 +369,11 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="eyebrow">Year 12 · Preston · North West England</div>
+    <div class="eyebrow">Year 12 · Lancaster · North West England</div>
     <h1>Developer.<br>Competitor.<br><em>Builder.</em></h1>
     <p class="hero-desc">
-      16-year-old software student targeting a tech degree apprenticeship.
-      Building real projects, competing nationally, and connecting with industry — right now.
+      16-year-old software student and founder of a solo tutoring business.
+      Building real products, competing nationally, and shipping code that gets used.
     </p>
     <div class="actions">
       <a href="#achievements" class="btn btn-primary">View Achievements</a>
@@ -414,8 +382,7 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
   </div>
   <div class="hero-visual">
     <div class="photo-wrap">
-      <img class="photo-img" src="headshot.jpg" alt="Harry Smalley"
-        onerror="this.style.display='none'; document.querySelector('.photo-placeholder').style.display='flex';">
+      <img class="photo-img" src="headshot.jpg" alt="Harry Smalley" onerror="this.style.display='none'; document.querySelector('.photo-placeholder').style.display='flex';">
       <div class="photo-vignette"></div>
       <div class="photo-placeholder">
         <span style="font-size:2rem;opacity:0.2">👤</span>
@@ -429,7 +396,7 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
 <!-- METRICS -->
 <div class="metrics">
   <div class="metric"><span class="metric-val"><span>A*</span>A*<span>A*</span></span><span class="metric-lbl">Predicted Grades</span></div>
-  <div class="metric"><span class="metric-val">3</span><span class="metric-lbl">A-Level Subjects</span></div>
+  <div class="metric"><span class="metric-val">5<span>+</span></span><span class="metric-lbl">Tutoring Clients</span></div>
   <div class="metric"><span class="metric-val">5<span>+</span></span><span class="metric-lbl">Competitions</span></div>
   <div class="metric"><span class="metric-val">16</span><span class="metric-lbl">Years Old</span></div>
 </div>
@@ -439,9 +406,9 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
   <div class="about-body">
     <div class="sec-eyebrow">About Me</div>
     <h2>Building towards<br>something real.</h2>
-    <p>I'm a Year 12 student at <strong>LUSoM Sixth Form</strong> in Lancaster, studying Maths, Further Maths and Computing at A-level — targeting <strong>A*A*A*</strong>.</p>
+    <p>I'm a Year 12 student at <strong>LUSoM Sixth Form</strong> in Lancaster, studying Maths, Further Maths and Computing at A-level - targeting <strong>A*A*A*</strong>.</p>
     <p>In March 2026, I led the data and ML solution slides in a consulting-style proposal presented to <strong>9 professionals at Lloyds Banking Group and TCS</strong>, receiving strong praise from every judge. I've competed in national data and maths competitions and presented at university level aged 16.</p>
-    <p>My goal is a <strong>tech or software degree apprenticeship</strong> in the North West. Long term, I want to build a company in AI or cybersecurity by my early twenties. Everything I'm doing now is building towards that.</p>
+    <p>Alongside my studies I run a <strong>solo GCSE Maths tutoring business</strong> - 5 active clients, £15/hr, and a custom-built management tool I wrote in Python to track sessions, client progress, and earnings.</p>
   </div>
   <div class="about-aside">
     <div class="sec-eyebrow">Details</div>
@@ -460,19 +427,73 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
         <span class="pill">Geography 6</span>
       </div>
     </div>
-    <div class="info-row"><span class="info-key">Location</span><span class="info-val">Preston, Lancashire</span></div>
-    <div class="info-row"><span class="info-key">Goal</span><span class="info-val">Tech Degree Apprenticeship<br>Manchester / North West</span></div>
-    <div class="info-row"><span class="info-key">GitHub</span><span class="info-val"><a href="https://github.com/pne35/Projects" target="_blank" style="color:var(--accent);text-decoration:none;">github.com/pne35</a></span></div>
+    <div class="info-row"><span class="info-key">Location</span><span class="info-val">Lancaster, Lancashire</span></div>
+    <div class="info-row"><span class="info-key">Tutoring</span><span class="info-val">5 clients · £15/hr · GCSE Maths</span></div>
+    <div class="info-row"><span class="info-key">GitHub</span><span class="info-val"><a href="https://github.com/pne35" target="_blank" style="color:var(--accent);text-decoration:none;">github.com/pne35</a></span></div>
+  </div>
+</section>
+
+<!-- TUTORING -->
+<section class="section" id="tutoring">
+  <div class="sec-eyebrow">Running a Business at 16</div>
+  <h2>Tutoring</h2>
+
+  <div class="tutoring-layout">
+    <div>
+      <div class="tutoring-stats">
+        <div class="t-stat"><span class="t-stat-val">5</span><span class="t-stat-lbl">Active Clients</span></div>
+        <div class="t-stat"><span class="t-stat-val">£<span>15</span></span><span class="t-stat-lbl">Per Hour</span></div>
+        <div class="t-stat"><span class="t-stat-val">GCSE</span><span class="t-stat-lbl">Maths · Edexcel · AQA · OCR</span></div>
+        <div class="t-stat"><span class="t-stat-val">1<span>:1</span></span><span class="t-stat-lbl">Online via Zoom</span></div>
+      </div>
+
+      <div class="tutoring-desc">
+        <p>I run a solo GCSE Maths tutoring business - finding clients, running sessions, tracking progress, and managing payments entirely independently. All 5 clients came through referrals or direct outreach.</p>
+        <p>Rather than using off-the-shelf tools, I <strong>built my own business management system</strong> in Python to handle everything the business needs: client records, session logs, weak topic tracking, payment status, and earnings summaries.</p>
+        <p>It's a real product I use every week - not a demo project.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <span class="tool-card-icon">🛠</span>
+          <div>
+            <div class="tool-card-title">tutoring-tools</div>
+            <div class="tool-card-sub">Python · Built from scratch · In active use</div>
+          </div>
+        </div>
+
+        <ul class="tool-features">
+          <li>Client records with intake data, contact info, and notes</li>
+          <li>Session logging - date, duration, topic, paid status</li>
+          <li>Weak topic tracker - per session and aggregated per client</li>
+          <li>Earnings summary - weekly, monthly, and total owed</li>
+          <li>Mark sessions as paid with unpaid session history</li>
+          <li>JSON persistence with sample data for the public repo</li>
+          <li>Joint session support for shared-rate clients</li>
+        </ul>
+
+        <div class="tool-chips">
+          <span class="chip">Python</span>
+          <span class="chip">CLI</span>
+          <span class="chip">JSON</span>
+          <span class="chip">File I/O</span>
+          <span class="chip">Business Logic</span>
+        </div>
+
+        <a href="https://github.com/pne35/tutoring-tools" target="_blank" class="modal-link">↗ View on GitHub</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ACHIEVEMENTS -->
 <section class="section" id="achievements">
   <div class="sec-eyebrow">Track Record</div>
-  <h2>Achievements &amp; Competitions <span style="font-size:0.8rem;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:300;letter-spacing:0.05em;">— click any card to explore</span></h2>
+  <h2>Achievements &amp; Competitions <span style="font-size:0.8rem;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:300;letter-spacing:0.05em;">- click any card to explore</span></h2>
 
   <div class="ach-grid">
-
     <div class="ach-card" onclick="openModal('lloyds')">
       <span class="ach-icon">🏦</span>
       <div class="ach-title">Lloyds Banking Group × TCS Challenge</div>
@@ -485,7 +506,7 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
 
     <div class="ach-card" onclick="openModal('uksdc')">
       <span class="ach-icon">📊</span>
-      <div class="ach-title">UKSDC — UK Schools Data Challenge</div>
+      <div class="ach-title">UKSDC - UK Schools Data Challenge</div>
       <p class="ach-body">Competed at regional level in one of the UK's leading student data competitions. Targeting a leadership role and further rounds in the next cycle.</p>
       <div style="display:flex;align-items:center;gap:0">
         <span class="ach-meta">Regional · Data Competition</span>
@@ -496,7 +517,7 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
     <div class="ach-card" onclick="openModal('lancaster')">
       <span class="ach-icon">🎓</span>
       <div class="ach-title">Lancaster University Presentation</div>
-      <p class="ach-body">Delivered a maths and statistics group project on Poisson Processes at university level, aged 16 — demonstrating academic ability beyond A-level standard.</p>
+      <p class="ach-body">Delivered a maths and statistics group project on Poisson Processes at university level, aged 16 - demonstrating academic ability beyond A-level standard.</p>
       <div style="display:flex;align-items:center;gap:0">
         <span class="ach-meta">University Level · Age 16</span>
         <span class="ach-link-hint">View details</span>
@@ -505,7 +526,7 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
 
     <div class="ach-card" onclick="openModal('smt')">
       <span class="ach-icon">📐</span>
-      <div class="ach-title">UK Senior Mathematical Trust — Silver</div>
+      <div class="ach-title">UK Senior Mathematical Trust - Silver</div>
       <p class="ach-body">Achieved Silver in the SMT, one of the UK's most prestigious sixth form maths competitions. Targeting Gold in the next cycle.</p>
       <div style="display:flex;align-items:center;gap:0">
         <span class="ach-meta">SMT · Silver Award</span>
@@ -526,13 +547,12 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
     <div class="ach-card" onclick="openModal('dofe')">
       <span class="ach-icon">🏅</span>
       <div class="ach-title">Duke of Edinburgh Award</div>
-      <p class="ach-body">Completed the DofE award across physical, skill, volunteering and expedition sections — demonstrating sustained commitment, teamwork, and resilience.</p>
+      <p class="ach-body">Completed the DofE award across physical, skill, volunteering and expedition sections - demonstrating sustained commitment, teamwork, and resilience.</p>
       <div style="display:flex;align-items:center;gap:0">
         <span class="ach-meta">DofE · Completed</span>
         <span class="ach-link-hint">View details</span>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -556,18 +576,20 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
     <div class="proj-card">
       <span class="proj-num">03</span>
       <div class="proj-title">PC Builds &amp; Sales</div>
-      <p class="proj-body">Built and sold custom PCs — researching components, managing budgets, and assembling hardware end-to-end. Sourced undervalued parts, built working systems, and sold at a margin. Developed practical skills in hardware architecture, troubleshooting, and client-facing communication.</p>
+      <p class="proj-body">Built and sold custom PCs - researching components, managing budgets, and assembling hardware end-to-end. Sourced undervalued parts, built working systems, and sold at a margin. Developed practical skills in hardware architecture, troubleshooting, and client-facing communication.</p>
       <div class="chips"><span class="chip">Hardware</span><span class="chip">Component Research</span><span class="chip">Troubleshooting</span><span class="chip">Entrepreneurship</span></div>
     </div>
     <div class="proj-card">
       <span class="proj-num">04</span>
-      <div class="proj-title">GCSE Maths Tutoring</div>
-      <p class="proj-body">Running a solo tutoring business offering 1-to-1 GCSE Maths sessions online via Zoom. Built a full client tracking system, session log, and topic progress tracker from scratch. Targeting Foundation and Higher tier students across Year 10 and 11.</p>
-      <div class="chips"><span class="chip">Teaching</span><span class="chip">Maths</span><span class="chip">Business</span><span class="chip">Entrepreneurship</span></div>
+      <div class="proj-title">Tutoring Business &amp; Management Tool</div>
+      <p class="proj-body">Running a solo GCSE Maths tutoring business with 5 active clients. Built a full Python CLI tool from scratch to manage client records, log sessions, track weak topics per student, mark payments, and generate earnings summaries - all backed by a local JSON store.</p>
+      <div class="chips"><span class="chip">Python</span><span class="chip">Business</span><span class="chip">CLI</span><span class="chip">JSON</span><span class="chip">Entrepreneurship</span></div>
     </div>
   </div>
-  <div class="proj-footer"><a href="https://github.com/pne35/Projects" target="_blank" class="btn btn-ghost">View GitHub →</a></div>
+  <div class="proj-footer"><a href="https://github.com/pne35" target="_blank" class="btn btn-ghost">View GitHub →</a></div>
 </section>
+
+
 
 <!-- SKILLS -->
 <section class="section" id="skills">
@@ -605,25 +627,21 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
   <div class="contact-inner">
     <div class="sec-eyebrow" style="justify-content:center">Get In Touch</div>
     <h2 style="margin-bottom:1.25rem">Let's connect.</h2>
-    <p>Open to work experience, competitions, and conversations with people in tech and software. Feel free to reach out.</p>
+    <p>Open to work experience, competitions, and conversations with people in tech and finance. Feel free to reach out.</p>
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/harry-smalley-156219341/" target="_blank" class="contact-link">LinkedIn</a>
-      <a href="https://github.com/pne35/Projects" target="_blank" class="contact-link">GitHub</a>
+      <a href="https://github.com/pne35" target="_blank" class="contact-link">GitHub</a>
       <a href="mailto:harrysmalley09@hotmail.com" class="contact-link">Email</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>Harry Smalley · Preston, Lancashire · 2026</span>
-  <span>Open to tech apprenticeships in the North West</span>
+  <span>Harry Smalley · Lancaster, Lancashire · 2026</span>
+  <span>Open to opportunities in tech and finance</span>
 </footer>
 
-<!-- ═══════════════════════════════════════════════
-     MODALS
-═══════════════════════════════════════════════ -->
-
-<!-- LLOYDS MODAL -->
+<!-- MODALS -->
 <div class="modal-overlay" id="modal-lloyds" onclick="closeModalOnBg(event, 'lloyds')">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('lloyds')">✕</button>
@@ -635,103 +653,37 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
     <div class="modal-body">
       <p>A consulting-style competition run in partnership between <strong>Lloyds Banking Group</strong> and <strong>Tata Consultancy Services (TCS)</strong>. Teams were tasked with producing a data-driven proposal on how to predict and prevent customer financial difficulty using machine learning.</p>
       <p>I led the <strong>data architecture and ML solution slides</strong> (slides 9–16), covering the modelling approach, feature selection, and deployment considerations. The presentation was judged by 9 Lloyds and TCS professionals and received strong praise across the board.</p>
-      <p>Following the competition I connected with <strong>7 industry professionals</strong> on LinkedIn, all of whom accepted — building a genuine network for future work experience and career opportunities.</p>
-
-      <!-- PHOTO -->
+      <p>Following the competition I connected with <strong>7 industry professionals</strong> on LinkedIn, all of whom accepted - building a genuine network for future work experience and career opportunities.</p>
       <div class="modal-photo">
-        <img src="lloyds.jpg" alt="Harry at Lloyds Banking Group competition"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <img src="lloyds.jpg" alt="Harry at Lloyds Banking Group competition" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
         <div class="modal-photo-placeholder" style="display:none;">
           <span style="font-size:2rem;opacity:0.2">📷</span>
           <span>Add lloyds.jpg</span>
         </div>
       </div>
       <p class="modal-photo-caption">Lloyds Banking Group × TCS Competition, March 2026</p>
-
-      <!-- SLIDE CAROUSEL -->
       <div class="carousel-wrap">
         <div class="carousel-label">Presentation Slides</div>
         <div class="carousel" id="carousel-lloyds">
           <div class="carousel-window">
             <div class="carousel-track" id="track-lloyds">
-              <div class="slide-item" data-index="0">
-                <img class="slide-img" src="Slide1.JPG" alt="Slide 1"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">1</span><span class="slide-hint">Slide1.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="1">
-                <img class="slide-img" src="Slide2.JPG" alt="Slide 2"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">2</span><span class="slide-hint">Slide2.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="2">
-                <img class="slide-img" src="Slide3.JPG" alt="Slide 3"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">3</span><span class="slide-hint">Slide3.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="3">
-                <img class="slide-img" src="Slide4.JPG" alt="Slide 4"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">4</span><span class="slide-hint">Slide4.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="4">
-                <img class="slide-img" src="Slide5.JPG" alt="Slide 5"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">5</span><span class="slide-hint">Slide5.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="5">
-                <img class="slide-img" src="Slide6.JPG" alt="Slide 6"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">6</span><span class="slide-hint">Slide6.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="6">
-                <img class="slide-img" src="Slide7.JPG" alt="Slide 7"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">7</span><span class="slide-hint">Slide7.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="7">
-                <img class="slide-img" src="Slide8.JPG" alt="Slide 8"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">8</span><span class="slide-hint">Slide8.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="8">
-                <img class="slide-img" src="Slide9.JPG" alt="Slide 9"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">9</span><span class="slide-hint">Slide9.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="9">
-                <img class="slide-img" src="Slide10.JPG" alt="Slide 10"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">10</span><span class="slide-hint">Slide10.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="10">
-                <img class="slide-img" src="Slide11.JPG" alt="Slide 11"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">11</span><span class="slide-hint">Slide11.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="11">
-                <img class="slide-img" src="Slide12.JPG" alt="Slide 12"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">12</span><span class="slide-hint">Slide12.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="12">
-                <img class="slide-img" src="Slide13.JPG" alt="Slide 13"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">13</span><span class="slide-hint">Slide13.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="13">
-                <img class="slide-img" src="Slide14.JPG" alt="Slide 14"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">14</span><span class="slide-hint">Slide14.JPG</span></div>
-              </div>
-              <div class="slide-item" data-index="14">
-                <img class="slide-img" src="Slide15.JPG" alt="Slide 15"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="slide-placeholder" style="display:none;"><span class="slide-num">15</span><span class="slide-hint">Slide15.JPG</span></div>
-              </div>
+              <div class="slide-item pos-center" data-index="0"><img class="slide-img" src="Slide1.JPG" alt="Slide 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">1</span><span class="slide-hint">Slide1.JPG</span></div></div>
+              <div class="slide-item" data-index="1"><img class="slide-img" src="Slide2.JPG" alt="Slide 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">2</span><span class="slide-hint">Slide2.JPG</span></div></div>
+              <div class="slide-item" data-index="2"><img class="slide-img" src="Slide3.JPG" alt="Slide 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">3</span><span class="slide-hint">Slide3.JPG</span></div></div>
+              <div class="slide-item" data-index="3"><img class="slide-img" src="Slide4.JPG" alt="Slide 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">4</span><span class="slide-hint">Slide4.JPG</span></div></div>
+              <div class="slide-item" data-index="4"><img class="slide-img" src="Slide5.JPG" alt="Slide 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">5</span><span class="slide-hint">Slide5.JPG</span></div></div>
+              <div class="slide-item" data-index="5"><img class="slide-img" src="Slide6.JPG" alt="Slide 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">6</span><span class="slide-hint">Slide6.JPG</span></div></div>
+              <div class="slide-item" data-index="6"><img class="slide-img" src="Slide7.JPG" alt="Slide 7" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">7</span><span class="slide-hint">Slide7.JPG</span></div></div>
+              <div class="slide-item" data-index="7"><img class="slide-img" src="Slide8.JPG" alt="Slide 8" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">8</span><span class="slide-hint">Slide8.JPG</span></div></div>
+              <div class="slide-item" data-index="8"><img class="slide-img" src="Slide9.JPG" alt="Slide 9" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">9</span><span class="slide-hint">Slide9.JPG</span></div></div>
+              <div class="slide-item" data-index="9"><img class="slide-img" src="Slide10.JPG" alt="Slide 10" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">10</span><span class="slide-hint">Slide10.JPG</span></div></div>
+              <div class="slide-item" data-index="10"><img class="slide-img" src="Slide11.JPG" alt="Slide 11" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">11</span><span class="slide-hint">Slide11.JPG</span></div></div>
+              <div class="slide-item" data-index="11"><img class="slide-img" src="Slide12.JPG" alt="Slide 12" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">12</span><span class="slide-hint">Slide12.JPG</span></div></div>
+              <div class="slide-item" data-index="12"><img class="slide-img" src="Slide13.JPG" alt="Slide 13" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">13</span><span class="slide-hint">Slide13.JPG</span></div></div>
+              <div class="slide-item" data-index="13"><img class="slide-img" src="Slide14.JPG" alt="Slide 14" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">14</span><span class="slide-hint">Slide14.JPG</span></div></div>
+              <div class="slide-item" data-index="14"><img class="slide-img" src="Slide15.JPG" alt="Slide 15" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="slide-placeholder" style="display:none;"><span class="slide-num">15</span><span class="slide-hint">Slide15.JPG</span></div></div>
             </div>
           </div>
-
           <div class="carousel-controls">
             <button class="carousel-btn" onclick="prevSlide('lloyds')">←</button>
             <div class="carousel-dots" id="dots-lloyds">
@@ -755,13 +707,11 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
           </div>
         </div>
       </div>
-
       <a href="https://www.lloydsbanking.com/" target="_blank" class="modal-link">↗ Lloyds Banking Group website</a>
     </div>
   </div>
 </div>
 
-<!-- UKSDC MODAL -->
 <div class="modal-overlay" id="modal-uksdc" onclick="closeModalOnBg(event, 'uksdc')">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('uksdc')">✕</button>
@@ -778,7 +728,6 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
   </div>
 </div>
 
-<!-- LANCASTER MODAL -->
 <div class="modal-overlay" id="modal-lancaster" onclick="closeModalOnBg(event, 'lancaster')">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('lancaster')">✕</button>
@@ -788,14 +737,13 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
       <div class="modal-subtitle">Poisson Process · University Level · Age 16</div>
     </div>
     <div class="modal-body">
-      <p>As part of a maths enrichment programme, I delivered a group presentation on <strong>Poisson Processes</strong> at Lancaster University — a university-level statistics topic well beyond A-level content.</p>
+      <p>As part of a maths enrichment programme, I delivered a group presentation on <strong>Poisson Processes</strong> at Lancaster University - a university-level statistics topic well beyond A-level content.</p>
       <p>Presenting to a university audience at 16 demonstrated both <strong>academic ability above A-level</strong> and the confidence to communicate complex mathematical ideas clearly.</p>
       <a href="https://www.lancaster.ac.uk/" target="_blank" class="modal-link">↗ Lancaster University website</a>
     </div>
   </div>
 </div>
 
-<!-- SMT MODAL -->
 <div class="modal-overlay" id="modal-smt" onclick="closeModalOnBg(event, 'smt')">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('smt')">✕</button>
@@ -812,7 +760,6 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
   </div>
 </div>
 
-<!-- IEA MODAL -->
 <div class="modal-overlay" id="modal-iea" onclick="closeModalOnBg(event, 'iea')">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('iea')">✕</button>
@@ -823,13 +770,12 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
     </div>
     <div class="modal-body">
       <p>The <strong>IEA Budget Challenge</strong>, run by the Institute of Economic Affairs, invites students to design a credible UK budget proposal covering taxation, public spending, and economic policy.</p>
-      <p>My submission demonstrated analytical thinking, economic awareness, and the ability to construct and communicate a structured policy argument — skills directly relevant to consulting and business roles.</p>
+      <p>My submission demonstrated analytical thinking, economic awareness, and the ability to construct and communicate a structured policy argument.</p>
       <a href="https://iea.org.uk/" target="_blank" class="modal-link">↗ IEA website</a>
     </div>
   </div>
 </div>
 
-<!-- DOFE MODAL -->
 <div class="modal-overlay" id="modal-dofe" onclick="closeModalOnBg(event, 'dofe')">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('dofe')">✕</button>
@@ -847,7 +793,6 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: fle
 </div>
 
 <script>
-// ── MODAL ──
 function openModal(id) {
   document.getElementById('modal-' + id).classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -868,7 +813,6 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// ── CAROUSEL ──
 const carousels = {};
 
 function initCarousel(id, total) {
@@ -882,8 +826,7 @@ function renderCarousel(id) {
   if (!track) return;
   const win = track.parentElement;
   const slides = track.querySelectorAll('.slide-item');
-  const dots   = document.querySelectorAll('#dots-' + id + ' .carousel-dot');
-
+  const dots = document.querySelectorAll('#dots-' + id + ' .carousel-dot');
   const slideW = win.clientWidth;
   const gap = 12;
 
@@ -893,12 +836,8 @@ function renderCarousel(id) {
     slide.classList.toggle('pos-center', i === c.current);
   });
 
-  const offset = -(c.current * (slideW + gap));
-  track.style.transform = 'translateX(' + offset + 'px)';
-
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === c.current);
-  });
+  track.style.transform = 'translateX(' + (-(c.current * (slideW + gap))) + 'px)';
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === c.current));
 }
 
 function nextSlide(id) {
@@ -916,17 +855,12 @@ function goToSlide(id, index) {
   renderCarousel(id);
 }
 
-window.addEventListener('resize', () => {
-  Object.keys(carousels).forEach(id => renderCarousel(id));
-});
+window.addEventListener('resize', () => Object.keys(carousels).forEach(id => renderCarousel(id)));
 
 document.querySelectorAll('.modal-overlay').forEach(m => {
-  const observer = new MutationObserver(() => {
-    if (m.classList.contains('open')) {
-      setTimeout(() => Object.keys(carousels).forEach(id => renderCarousel(id)), 50);
-    }
-  });
-  observer.observe(m, { attributes: true, attributeFilter: ['class'] });
+  new MutationObserver(() => {
+    if (m.classList.contains('open')) setTimeout(() => Object.keys(carousels).forEach(id => renderCarousel(id)), 50);
+  }).observe(m, { attributes: true, attributeFilter: ['class'] });
 });
 
 document.addEventListener('keydown', e => {
@@ -935,12 +869,11 @@ document.addEventListener('keydown', e => {
   const id = open.id.replace('modal-', '');
   if (carousels[id]) {
     if (e.key === 'ArrowRight') nextSlide(id);
-    if (e.key === 'ArrowLeft')  prevSlide(id);
+    if (e.key === 'ArrowLeft') prevSlide(id);
   }
 });
 
 initCarousel('lloyds', 15);
 </script>
 
-</body>
-</html>
+</body></html>
